@@ -1,8 +1,6 @@
-import Layout from '../components/Layout'
-import Link from 'next/link'
 import {providerColumns} from '../data/data'
 import fetch from 'isomorphic-unfetch'
-import {Table} from 'antd'
+import {Table, Input} from 'antd'
 
 export async function getStaticProps () {
   const res = await fetch('http://veersignadminservice-vcg-com.cb16adeacafeb4b9b988ae5d7e8bf0fc1.cn-beijing.alicontainer.com/signProvider/queryProviderInfo', {
@@ -17,7 +15,6 @@ export async function getStaticProps () {
     })
   })
   const response = await res.json();
-  console.log('response', response)
   return {
     props: {
       data: response.data
@@ -26,8 +23,10 @@ export async function getStaticProps () {
 }
 
 const App = ({data}) => (
-  <Layout>
+  <div>
+    <Input />
     <Table
+      rowKey="id"
       size="small"
       columns={providerColumns}
       dataSource={data.list}
@@ -35,11 +34,7 @@ const App = ({data}) => (
       scroll={{ x: 1400 }}
       style={{ marginTop: '24px'}}
     />
-    <ul>
-      <li><Link href={`/post/1`}>hello</Link></li>
-      <li><Link href={`/post/2`}>hello1</Link></li>
-    </ul>
-  </Layout>
+  </div>
 )
 
 export default App;
