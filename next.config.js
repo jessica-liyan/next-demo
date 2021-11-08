@@ -11,8 +11,8 @@ module.exports = {
   async rewrites () {
     return [
       {
-        source: '/lists',
-        destination: '/list'
+        source: '/v1/:path*',
+        destination: 'https://photo-test-community.shijue.me/:path*'
       }
     ]
   }

@@ -1,4 +1,4 @@
-import {providerColumns} from '../data/data'
+import {providerColumns} from '@/data/data'
 import fetch from 'isomorphic-unfetch'
 import {Table, Input} from 'antd'
 
