@@ -3,17 +3,8 @@ import fetch from 'isomorphic-unfetch'
 import Head from 'next/head'
 
 const Location = ({ data }) => {
-  useEffect(() => {
-    getData()
-  }, [])
-
-  const getData = async () => {
-    const res = await fetch('/v1/task/locationList');
-    const response = await res.json();
-    console.log('请求', response)
-  }
+  console.log('location', data)
   return <div>
-    location
     <Head>
       <title>标题</title>
       <meta name="description" content="描述"/>

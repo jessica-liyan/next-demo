@@ -1,23 +1,4 @@
 import Link from 'next/link'
-import Router from 'next/router'
-
-const events = [
-  'routeChangeStart',
-  'routeChangeComplete',
-  'routeChangeError',
-  'beforeHistoryChange',
-  'hashChangeStart',
-  'hashChangeComplete'
-]
-function makeEvent (event) {
-  return (...args) => {
-    console.log('路由', event, ...args)
-  }
-}
-
-events.map(event => {
-  Router.events.on(event, makeEvent(event))
-})
 
 const List = ({ data }) => (
   <ul>

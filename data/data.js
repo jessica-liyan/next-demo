@@ -1,9 +1,13 @@
-const providerColumns = [
+const auditStatusArr=[{id: 0,label: "待审核"},{ id: 1,label: "已通过"},{id: -1,label: "已驳回"}]
+const jobArr=[{id: 1,label: "设计从业者"},{ id: 2,label: "设计专业师生"},{id: 3,label: "非设计职业"},{id: 4,label: "非设计专业师生"}]
+const feedTypeArr = [{id: 1,label: "插画"},{ id: 2, label: "设计模板" },{ id: 3, label: "背景" },{ id: 4, label: "元素" },{ id: 5, label: "PPT" },{ id: 6, label: "摄影图片" }]
+
+const qualificationColumns = [
   {
-    title: '供稿人ID',
-    dataIndex: 'id',
-    key: 'id',
-    width: 100
+    title: '序号',
+    dataIndex: 'rowIndex',
+    key: 'rowIndex',
+    width: 50
   },
   {
     title: '姓名',
@@ -30,28 +34,11 @@ const providerColumns = [
     width: 100
   },
   {
-    title: '状态',
+    title: '审核状态',
     dataIndex: 'status',
     key: 'status',
     width: 100,
-    render: (id, record) => {
-      var text = '';
-      switch (record.status) {
-        case 1:
-          text = '有效';
-          break;
-        case 2:
-          text = '已过期';
-          break;
-        case 3:
-          text = '已解约';
-          break;
-        case 4:
-          text = '已冻结';
-          break;
-      }
-      return text;
-    }
+    "render": (id) =>id || id===0 ? auditStatusArr.find((item)=>item.id==id).label : '---'
   },
   {
     title: '签约类型',
@@ -72,46 +59,32 @@ const providerColumns = [
     }
   },
   {
-    title: '供稿类别',
+    title: '申请类别',
     dataIndex: 'feedType',
     key: 'feedType',
     width: 150,
-    render: (id, record) => {
-      const list = {
-        "1": "插画",
-        "2": "设计模板",
-        "3": "背景",
-        "4": "元素",
-        "5": "PPT模板",
-        "6": "摄影图片"
-      }
-      return record.feedType.split(',').map(item => list[item]).join('、');
-    }
+    "render": (ids) => ids ? ids.split(',').map(id=>feedTypeArr.find(item=>item.id==id).label).join('、'): '---'
   },
   {
-    title: '供稿等级',
-    dataIndex: 'feedLevel',
-    key: 'feedLevel',
+    title: '职业',
+    dataIndex: 'job',
+    key: 'job',
     width: 100,
-    render: (id, record) => {
-      var text = '';
-      switch (record.feedLevel) {
-        case 1:
-          text = '普通';
-          break;
-        case 2:
-          text = '精品';
-          break;
-      }
-      return text;
-    }
+    "render": (id) =>id ? jobArr.find((item)=>item.id==id).label : '---'
   },
   {
-    title: '合同签署时间',
-    dataIndex: 'signDate',
-    key: 'signDate',
+    title: '备注',
+    dataIndex: 'remark',
+    key: 'remark',
+    width: 200,
+    "render": (text) => (text ? text : '---')
+  },
+  {
+    title: '申请时间',
+    dataIndex: 'createdTime',
+    key: 'createdTime',
     width: 200
   },
 ];
 
-export {providerColumns};
+export {qualificationColumns};
