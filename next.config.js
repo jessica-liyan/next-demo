@@ -15,5 +15,14 @@ module.exports = {
         destination: 'https://photo-test-community.shijue.me/:path*'
       }
     ]
+  },
+  // 不能用于getServerSideProps  getStaticProps页面，因为构建时就渲染成了html
+  exportPathMap: async function (
+    defaultPathMap,
+    { dev, dir, outDir, distDir, buildId }
+  ) {
+    return {
+      '/about': { page : '/about'}
+    }
   }
 }

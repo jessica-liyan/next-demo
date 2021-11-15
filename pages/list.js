@@ -3,7 +3,7 @@ import Link from 'next/link'
 const List = ({ data }) => (
   <ul>
     {
-      data.map(item => <li key={item.id}><Link href={`/post/${item.id}`}>{item.title}</Link></li>)
+      data.map(item => <li key={item.id}>{item.title}</li>)
     }
     <li><Link href={`#test`}>hash跳转</Link></li>
   </ul>
