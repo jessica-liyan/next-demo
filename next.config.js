@@ -1,4 +1,4 @@
-const debug = process.env.NODE_ENV !== 'production';
+const isProd = process.env.NODE_ENV == 'production';
 
 module.exports = {
   async redirects() {
@@ -27,5 +27,5 @@ module.exports = {
       '/about': { page : '/about'}
     }
   },
-  assetPrefix: debug ? '/next-demo/' : ''
+  assetPrefix: isProd ? '/next-demo/' : ''
 }
