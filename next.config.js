@@ -27,5 +27,5 @@ module.exports = {
       '/about': { page : '/about'}
     }
   },
-  assetPrefix: isProd ? '/next-demo/' : ''
+  assetPrefix: isProd ? './' : ''
 }
