@@ -1,3 +1,5 @@
+const debug = process.env.NODE_ENV !== 'production';
+
 module.exports = {
   async redirects() {
     return [
@@ -24,5 +26,6 @@ module.exports = {
     return {
       '/about': { page : '/about'}
     }
-  }
+  },
+  assetPrefix: debug ? '/next-demo/' : ''
 }
